@@ -1,5 +1,6 @@
 ﻿using System;
 using static System.Console;
+using CarSimulator.Domain;
 
 namespace CarSimulator
 {
@@ -9,7 +10,11 @@ namespace CarSimulator
         {
             bool shouldNotExit = true;
 
-            while(shouldNotExit)
+            Car[] carList = new Car[10];
+
+            ushort carListCurrentIndexPosition = 0;
+
+            while (shouldNotExit)
             {
                 WriteLine("1. Add car");
                 WriteLine("2. List cars");
@@ -24,6 +29,19 @@ namespace CarSimulator
                 {
                     case ConsoleKey.D1:
                     case ConsoleKey.NumPad1:
+
+                        Write("Brand: ");
+
+                        string brand = ReadLine();
+
+                        Write("Model: ");
+
+                        string model = ReadLine();
+
+                        Car myCar = new Car(brand, model);
+
+                        carList[carListCurrentIndexPosition++] = myCar;
+
                         break;
                     case ConsoleKey.D2:
                     case ConsoleKey.NumPad2:
